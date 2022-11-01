@@ -44,7 +44,7 @@ class Student(object):
 
 	# 学生和车之间存在依赖关系 - 学生使用了汽车
 	def drive(self, car):
-		print('%s驾驶着%s欢快的行驶在去西天的路上' % (self._name, car._brand))
+		print(f'{self._name}驾驶着{car._brand}欢快的行驶在去西天的路上')
 		car.accelerate(30)
 		print(car)
 		car.accelerate(50)
@@ -53,13 +53,13 @@ class Student(object):
 		print(car)
 
 	def study(self, course_name):
-		print('%s正在学习%s.' % (self._name, course_name))
+		print(f'{self._name}正在学习{course_name}.')
 
 	def watch_av(self):
 		if self._age < 18:
-			print('%s只能观看《熊出没》.' % self._name)
+			print(f'{self._name}只能观看《熊出没》.')
 		else:
-			print('%s正在观看岛国爱情动作片.' % self._name)
+			print(f'{self._name}正在观看岛国爱情动作片.')
 
 	# 重载大于(>)运算符
 	def __gt__(self, other):

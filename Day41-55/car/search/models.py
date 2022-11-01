@@ -11,11 +11,6 @@ class CarRecord(models.Model):
     @property
     def happen_date(self):
         return self.date.strftime('%Y-%m-%d %H:%M:%S')
-        """
-        return '%d年%02d月%02d日 %02d:%02d:%02d' % \
-               (self.date.year, self.date.month, self.date.day,
-                self.date.hour, self.date.minute, self.date.second)
-        """
 
     class Meta:
         db_table = 'tb_car_record'

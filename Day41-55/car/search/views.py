@@ -35,9 +35,12 @@ def ajax_search(request):
     # 如果请求中没有指定名字的cookie可以通过get方法的第二个参数设置一个默认的返回值
     last_visit_time = request.COOKIES.get('last_visit_time')
     if request.method == 'GET':
-        response = render(request, 'search2.html',
-                          {'last': last_visit_time if last_visit_time
-                           else '你是第一次访问我们的网站'})
+        response = render(
+            request,
+            'search2.html',
+            {'last': last_visit_time or '你是第一次访问我们的网站'},
+        )
+
         # 通过render渲染页面后先用set_cookie方法设置cookie后再返回HttpResponse对象
         # 第一个参数是cookie的名字 第二个参数是cookie的值 第三个参数是过期时间(秒)
         response.set_cookie('last_visit_time', current_time, max_age=MAX_AGE)

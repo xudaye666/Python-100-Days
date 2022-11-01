@@ -9,14 +9,9 @@ def nose(x,y):#鼻子
     begin_fill()#准备开始填充图形
     a=0.4
     for i in range(120):
-        if 0<=i<30 or 60<=i<90:
-            a=a+0.08
-            left(3) #向左转3度
-            forward(a) #向前走a的步长
-        else:
-            a=a-0.08
-            left(3)
-            forward(a)
+        left(3) #向左转3度
+        a = a+0.08 if 0<=i<30 or 60<=i<90 else a-0.08
+        forward(a) #向前走a的步长
     end_fill()#填充完成
 
     penup()
@@ -65,14 +60,9 @@ def head(x,y):#头
     setheading(-30)
     a=0.4
     for i in range(60):
-        if 0<=i<30 or 60<=i<90:
-            a=a+0.08
-            lt(3) #向左转3度
-            fd(a) #向前走a的步长
-        else:
-            a=a-0.08
-            lt(3)
-            fd(a)
+        lt(3) #向左转3度
+        a = a+0.08 if 0<=i<30 or 60<=i<90 else a-0.08
+        fd(a) #向前走a的步长
     end_fill()
 
 
