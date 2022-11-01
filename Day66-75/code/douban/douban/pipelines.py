@@ -22,9 +22,9 @@ class DoubanPipeline(object):
         #Remove invalid data
         valid = True
         for data in item:
-          if not data:
-            valid = False
-            raise DropItem("Missing %s of blogpost from %s" %(data, item['url']))
+            if not data:
+                valid = False
+                raise DropItem(f"Missing {data} of blogpost from {item['url']}")
         if valid:
         #Insert data into database
             new_moive=[{
@@ -36,8 +36,11 @@ class DoubanPipeline(object):
                 "actor":item['actor']
             }]
             self.collection.insert(new_moive)
-            log.msg("Item wrote to MongoDB database %s/%s" %
-            (settings['MONGODB_DB'], settings['MONGODB_COLLECTION']),
-            level=log.DEBUG, spider=spider) 
+            log.msg(
+                f"Item wrote to MongoDB database {settings['MONGODB_DB']}/{settings['MONGODB_COLLECTION']}",
+                level=log.DEBUG,
+                spider=spider,
+            )
+
         return item
 

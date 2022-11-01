@@ -37,8 +37,12 @@ def emps(request, no='0'):
     # QuerySet使用了惰性查询 - 如果不是非得取到数据那么不会发出SQL语句
     # 这样做是为了节省服务器内存的开销 - 延迟加载 - 节省空间势必浪费时间
     emps_list = list(Emp.objects.filter(dept__no=no).select_related('dept'))
-    ctx = {'emp_list': emps_list, 'dept_name': emps_list[0].dept.name} \
-        if len(emps_list) > 0 else {}
+    ctx = (
+        {'emp_list': emps_list, 'dept_name': emps_list[0].dept.name}
+        if emps_list
+        else {}
+    )
+
     return render(request, 'emp.html', context=ctx)
 
 
